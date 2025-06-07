@@ -344,12 +344,12 @@ const HospitalityAbout = () => {
                     <img
                       src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                       alt="Luxury Hotel Hospitality"
-                      className="w-full h-96 object-cover relative z-2"
+                      className="w-full h-134 object-cover relative z-2"
                     />
                     {/* Play button overlay */}
-                    <div className="play-button">
+                    {/* <div className="play-button">
                       <FaPlay className="text-white text-xl ml-1" />
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -364,9 +364,9 @@ const HospitalityAbout = () => {
                 className={`${visibleElements.has('about-title') ? 'animate-fade-in-right stagger-1' : ''}`}
               >
                 <h2 className="text-5xl md:text-6xl font-bold text-glow mb-4">
-                  <span style={{ color: "var(--header)" }}>Exceptional</span>
+                  <span style={{ color: "var(--header)" }}>What We Are</span>
                   <br />
-                  <span style={{ color: "var(--highlight-cta)" }}>Hospitality</span>
+                  <span style={{ color: "var(--highlight-cta)" }}>All About</span>
                 </h2>
                 <div className="w-24 h-1 rounded-full mb-6" style={{ background: "var(--highlight-cta)" }}></div>
               </div>
@@ -378,14 +378,13 @@ const HospitalityAbout = () => {
                 className={`${visibleElements.has('about-description') ? 'animate-fade-in-right stagger-2' : ''}`}
               >
                 <p className="text-lg leading-relaxed mb-6 description">
-                  At <span style={{ color: "var(--highlight-cta)", fontWeight: "600" }}>Ruhunugroup Hospitality</span>, 
-                  we craft unforgettable experiences that blend authentic Sri Lankan warmth with world-class luxury. 
-                  Our commitment to excellence transforms every stay into a cherished memory.
+                  At <span style={{ color: "var(--highlight-cta)", fontWeight: "600" }}>Ruhunugroup</span>, 
+                 We are committed to uplifting the Southern Province’s tourism and dining experiences. From historic stays to modern cafés, our establishments offer comfort, flavor, and local charm. We’ve proudly introduced new concepts, elevated standards, and brought world-class experiences to a region that once lacked access to quality service. We take pride in creating welcoming spaces that bring people together — whether it’s over a traditional Sri Lankan meal, a weekend getaway, or a cup of freshly brewed coffee. Our goal is to set new standards in service and quality, while staying deeply rooted in the communities we serve.
                 </p>
               </div>
 
               {/* Features List */}
-              <div
+              {/* <div
                 id="about-features"
                 data-animate
                 className={`${visibleElements.has('about-features') ? 'animate-fade-in-right stagger-3' : ''}`}
@@ -398,7 +397,7 @@ const HospitalityAbout = () => {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
               {/* Quote Section */}
               <div
@@ -415,7 +414,7 @@ const HospitalityAbout = () => {
           </div>
 
           {/* Stats Section */}
-          <div
+          {/* <div
             id="stats-section"
             data-animate
             className={`grid grid-cols-2 md:grid-cols-4 gap-6 ${visibleElements.has('stats-section') ? 'animate-fade-in-up stagger-5' : ''}`}
@@ -427,10 +426,10 @@ const HospitalityAbout = () => {
                 <div className="text-sm description">{stat.label}</div>
               </div>
             ))}
-          </div>
+          </div> */}
 
           {/* CTA Button */}
-          <div className="text-center mt-16">
+          {/* <div className="text-center mt-16">
             <a
               href="#"
               className="cta-button"
@@ -441,7 +440,7 @@ const HospitalityAbout = () => {
             >
               Discover More <FaArrowRight />
             </a>
-          </div>
+          </div> */}
         </div>
       </section>
     </>

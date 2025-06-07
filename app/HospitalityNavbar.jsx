@@ -44,28 +44,16 @@ const HospitalityNavbar = () => {
   }, []);
 
   const menuItems = [
-    { name: 'Home', icon: FaHome, href: '#' },
+    { name: 'Home', icon: FaHome, href: '/' },
     { 
-      name: 'About', 
+      name: 'About Us', 
       icon: FaInfoCircle, 
-      href: '#',
-      dropdown: ['Our Story', 'Mission & Vision', 'Team', 'Awards']
+      href: '/about',
     },
-    { 
-      name: 'Services', 
-      icon: FaUtensils, 
-      href: '#',
-      dropdown: ['Dining', 'Catering', 'Event Planning', 'Room Service']
-    },
-    { 
-      name: 'Accommodations', 
-      icon: FaBed, 
-      href: '#',
-      dropdown: ['Luxury Suites', 'Standard Rooms', 'Family Rooms', 'Amenities']
-    },
-    { name: 'Events', icon: FaCalendarAlt, href: '#' },
-    { name: 'Gallery', icon: FaImages, href: '#' },
-    { name: 'Contact', icon: FaPhone, href: '#' }
+    
+    { name: 'Ruhunu in Focus(Blog)', icon: FaCalendarAlt, href: '/blog' },
+   
+    { name: 'Contact', icon: FaPhone, href: '/contact' }
   ];
 
   return (
@@ -246,61 +234,20 @@ const HospitalityNavbar = () => {
               </div>
             </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-2">
-              {menuItems.map((item, index) => (
-                <div 
-                  key={index} 
-                  className="nav-item relative"
-                  onMouseEnter={() => setActiveDropdown(item.dropdown ? index : null)}
-                  onMouseLeave={() => setActiveDropdown(null)}
-                >
-                  <a href={item.href} className="nav-link">
-                    <item.icon className="text-sm" />
-                    <span>{item.name}</span>
-                    {item.dropdown && <FaChevronDown className="text-xs ml-1" />}
-                  </a>
-                  {/* Dropdown Menu */}
-                  {item.dropdown && (
-                    <div className="dropdown-menu">
-                      {item.dropdown.map((dropItem, dropIndex) => (
-                        <a
-                          key={dropIndex}
-                          href="#"
-                          className="dropdown-item block text-sm"
-                        >
-                          {dropItem}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* CTA Button & Mobile Menu Toggle */}
-            <div className="flex items-center space-x-4">
-              {/* CTA Button - Hidden on mobile */}
-              <button className="hidden md:flex items-center space-x-2 cta-button">
-                <FaMapMarkerAlt className="text-sm" />
-                <span>Book Now</span>
-              </button>
-
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300"
-                style={{ color: palette.highlights, background: palette.buttons }}
-              >
-                {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
-              </button>
-            </div>
+            {/* Hamburger Menu Button - always visible */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300"
+              style={{ color: palette.highlights, background: palette.buttons }}
+            >
+              {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+            </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - always used for all screen sizes */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mobile-menu backdrop-blur border-t"
+          <div className="mobile-menu backdrop-blur border-t"
                style={{ 
                  background: palette.background, 
                  borderColor: palette.buttons 
@@ -336,12 +283,7 @@ const HospitalityNavbar = () => {
                   </div>
                 ))}
                 {/* Mobile CTA */}
-                <div className="pt-4 border-t" style={{ borderColor: palette.buttons }}>
-                  <button className="w-full flex items-center justify-center space-x-2 cta-button">
-                    <FaMapMarkerAlt />
-                    <span>Book Your Stay Now</span>
-                  </button>
-                </div>
+                
               </div>
             </div>
           </div>

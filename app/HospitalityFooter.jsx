@@ -56,14 +56,6 @@ const HospitalityFooter = () => {
   return (
     <>
       <style jsx>{`
-        /* Color palette from your image:
-          Background: #F7F1E7
-          Headers: #323232
-          Descriptions: #6E6E6E
-          Buttons/Accents: #B7D2A8
-          Cards/Dividers: #FFFFFF
-          Highlights/CTAs: #C8A13D
-        */
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(30px);}
           to { opacity: 1; transform: translateY(0);}
@@ -210,8 +202,8 @@ const HospitalityFooter = () => {
         id="hospitality-footer"
         className="relative overflow-hidden"
         style={{ 
-          background: "#F7F1E7", // Background from palette
-          color: "#323232"       // Headers from palette
+          background: "#F7F1E7",
+          color: "#323232"
         }}
       >
         {/* Background Decorative Elements */}
@@ -223,16 +215,15 @@ const HospitalityFooter = () => {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl pulse-element"
             style={{ background: "#FFFFFF33" }} />
         </div>
-
         {/* Main Footer Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             
-            {/* Company Info */}
+            {/* Company Info & Social Media */}
             <div className={`space-y-6 ${isVisible ? 'animate-fade-in-left stagger-1' : ''}`}>
               <div>
                 <h3 className="text-2xl font-bold mb-4 gradient-text">
-                  Ruhunugroup Hospitality
+                  Ruhunugroup
                 </h3>
                 <p className="text-base leading-relaxed mb-4" style={{ color: "#6E6E6E", opacity: 0.9 }}>
                   Transforming experiences with world-class hospitality services across Sri Lanka. Where warmth meets excellence.
@@ -242,7 +233,6 @@ const HospitalityFooter = () => {
                   <span>Rated 4.9/5 by our guests</span>
                 </div>
               </div>
-              
               {/* Social Media */}
               <div>
                 <h4 className="text-lg font-semibold mb-4" style={{ color: "#C8A13D" }}>
@@ -250,15 +240,17 @@ const HospitalityFooter = () => {
                 </h4>
                 <div className="flex space-x-4">
                   {[
-                    { icon: FaFacebookF, color: "#B7D2A8" },
-                    { icon: FaInstagram, color: "#C8A13D" },
-                    { icon: FaTwitter, color: "#B7D2A8" },
-                    { icon: FaLinkedinIn, color: "#C8A13D" },
-                    { icon: FaYoutube, color: "#B7D2A8" }
+                    { icon: FaFacebookF, color: "#B7D2A8", url: "https://facebook.com" },
+                    { icon: FaInstagram, color: "#C8A13D", url: "https://instagram.com" },
+                    { icon: FaTwitter, color: "#B7D2A8", url: "https://twitter.com" },
+                    { icon: FaLinkedinIn, color: "#C8A13D", url: "https://linkedin.com" },
+                    { icon: FaYoutube, color: "#B7D2A8", url: "https://youtube.com" }
                   ].map((social, index) => (
                     <a
                       key={index}
-                      href="#"
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-12 h-12 rounded-full backdrop-blur social-icon flex items-center justify-center"
                       style={{ 
                         background: `${social.color}22`,
@@ -272,23 +264,25 @@ const HospitalityFooter = () => {
               </div>
             </div>
 
-            {/* Quick Links */}
+            {/* Quick Navigation Paths */}
             <div className={`space-y-6 ${isVisible ? 'animate-fade-in-up stagger-2' : ''}`}>
               <h4 className="text-lg font-semibold mb-4" style={{ color: "#C8A13D" }}>
                 Quick Links
               </h4>
               <nav className="space-y-3">
                 {[
-                  "Home", "About Us", "Our Outlets", "Services", 
-                  "Accommodations", "Dining", "Events", "Gallery"
+                  { name: "Home", url: "/" },
+                  { name: "About Us", url: "/about" },
+                  { name: "Ruhunu in Focus (Blog)", url: "/blog" },
+                  { name: "Contact", url: "/contact" }
                 ].map((link, index) => (
                   <a
                     key={index}
-                    href="#"
+                    href={link.url}
                     className="block footer-link text-base"
                     style={{ color: "#6E6E6E" }}
                   >
-                    {link}
+                    {link.name}
                   </a>
                 ))}
               </nav>
@@ -323,42 +317,6 @@ const HospitalityFooter = () => {
                 </div>
               </div>
             </div>
-
-            {/* Newsletter */}
-            <div className={`space-y-6 ${isVisible ? 'animate-fade-in-right stagger-4' : ''}`}>
-              <h4 className="text-lg font-semibold mb-4" style={{ color: "#C8A13D" }}>
-                Stay Updated
-              </h4>
-              <p className="text-sm opacity-90 mb-4" style={{ color: "#6E6E6E" }}>
-                Subscribe to our newsletter for exclusive offers and updates.
-              </p>
-              
-              <div className="space-y-3">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full px-4 py-3 rounded-full newsletter-input backdrop-blur"
-                />
-                <button className="w-full px-4 py-3 rounded-full subscribe-btn font-medium">
-                  Subscribe Now
-                </button>
-              </div>
-
-              {/* Awards/Certifications */}
-              <div className="pt-4">
-                <p className="text-xs opacity-70 mb-2" style={{ color: "#6E6E6E" }}>Certified by:</p>
-                <div className="flex space-x-2">
-                  <div className="w-12 h-8 rounded border flex items-center justify-center"
-                    style={{ background: "#C8A13D22", borderColor: "#C8A13D55" }}>
-                    <span className="text-xs font-bold" style={{ color: "#C8A13D" }}>ISO</span>
-                  </div>
-                  <div className="w-12 h-8 rounded border flex items-center justify-center"
-                    style={{ background: "#B7D2A822", borderColor: "#B7D2A855" }}>
-                    <FaStar style={{ color: "#B7D2A8", fontSize: "0.8rem" }} />
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -371,7 +329,7 @@ const HospitalityFooter = () => {
             <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
               <div className="flex items-center space-x-4">
                 <p className="text-sm opacity-80" style={{ color: "#6E6E6E" }}>
-                  © 2024 Ruhunugroup Hospitality. All rights reserved.
+                  © 2025 Ruhunugroup. All rights reserved.
                 </p>
                 <div className="hidden md:flex items-center space-x-1 text-sm">
                   <span style={{ color: "#6E6E6E" }}>Made with</span>

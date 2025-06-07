@@ -50,7 +50,6 @@ const Home = () => {
   return (
     <div className="split-root">
       <style jsx>{`
-        /* Root styles */
         .split-root {
           min-height: 100vh;
           width: 100vw;
@@ -80,7 +79,8 @@ const Home = () => {
         .section-expand {
           flex: 10 1 0 !important;
           z-index: 10;
-          box-shadow: 0 0 0 9999px rgba(0,0,0,0.18);
+          /* Remove black backdrop! Use a subtle gold glow instead */
+          box-shadow: 0 0 0 9999px rgba(200,161,61,0.05);
           filter: brightness(1.04) blur(0.5px);
         }
         .section-shrink {
@@ -108,7 +108,6 @@ const Home = () => {
           from { transform: translateX(40px) scale(0.98); opacity: 0.6; }
           to { transform: none; opacity: 1; }
         }
-        /* Section hover/active effects */
         .section:hover:not(.section-shrink):not(.section-expand),
         .section:focus-visible:not(.section-shrink):not(.section-expand) {
           box-shadow: 0 0 0 6px #C8A13D44, 0 0 80px 0 #fff7 inset;
@@ -120,7 +119,6 @@ const Home = () => {
           box-shadow: 0 0 0 6px #3E7FFF44, 0 0 80px 0 #fff7 inset;
           filter: brightness(1.09) drop-shadow(0 0 16px #3E7FFF22);
         }
-        /* Animated blobs */
         .blob {
           position: absolute;
           border-radius: 50%;
@@ -158,7 +156,6 @@ const Home = () => {
           50% { transform: scale(1.11) translateY(-32px) translateX(16px);}
           100% { transform: scale(1) translateY(0px);}
         }
-        /* Sparkle animation */
         .sparkle {
           position: absolute;
           width: 18px; height: 18px;
@@ -182,7 +179,6 @@ const Home = () => {
           60% { opacity: 1; transform: scale(1.2) rotate(-10deg);}
           100% { opacity: 0; transform: scale(0.7) rotate(0deg);}
         }
-        /* Section content */
         .section-content {
           position: relative;
           z-index: 2;
@@ -236,7 +232,6 @@ const Home = () => {
         .right-section .section-btn:hover {
           box-shadow: 0 8px 34px #3E7FFF33, 0 2px 8px #3E7FFF33;
         }
-        /* Curved divider */
         .curved-divider {
           position: absolute;
           left: 50%;
@@ -252,7 +247,6 @@ const Home = () => {
           0% { filter: drop-shadow(0 0 0 #C8A13D77);}
           100% { filter: drop-shadow(0 0 16px #C8A13D77);}
         }
-        /* Rotating logo at the center */
         .logo-center-wrap {
           position: absolute;
           left: 50%;
@@ -266,12 +260,12 @@ const Home = () => {
           justify-content: center;
           background: radial-gradient(circle at 60% 40%, #fff9 60%, #C8A13D44 100%);
           border-radius: 50%;
-          box-shadow: 0 6px 40px #32323222, 0 0 0 12px #fff2;
+          box-shadow: 0 6px 40px #C8A13D22, 0 0 0 12px #fff2;
           transition: box-shadow 0.7s cubic-bezier(.7,.2,.2,1);
           animation: logoPulse 2.5s infinite alternate;
         }
         @keyframes logoPulse {
-          0% { box-shadow: 0 6px 40px #32323222, 0 0 0 12px #fff2;}
+          0% { box-shadow: 0 6px 40px #C8A13D22, 0 0 0 12px #fff2;}
           100% { box-shadow: 0 12px 60px #C8A13D33, 0 0 0 24px #fff2;}
         }
         .logo-center {
@@ -298,7 +292,6 @@ const Home = () => {
           0% { transform: rotate(0deg);}
           100% { transform: rotate(360deg);}
         }
-        /* Responsive */
         @media (max-width: 1100px) {
           .logo-center-wrap { width: 90px; height: 90px; }
           .logo-center { width: 54px; height: 54px; }
@@ -392,20 +385,13 @@ const Home = () => {
             strokeWidth="14"
             fill="none"
             opacity="0.83"
-            filter="url(#shadow)"
           />
-          <defs>
-            <filter id="shadow" x="-20" y="0" width="200" height="1000">
-              <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#C8A13D77"/>
-            </filter>
-          </defs>
         </svg>
       </div>
 
       {/* Rotating Logo at Center */}
       <div className="logo-center-wrap" ref={logoRef}>
         <div className="logo-center">
-          {/* Replace with your logo SVG or image */}
           <img
             src={LOGO_URL}
             alt="Company Logo"
