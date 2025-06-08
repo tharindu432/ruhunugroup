@@ -5,30 +5,25 @@ import {
   FaTimes, 
   FaHome, 
   FaInfoCircle, 
-  FaUtensils, 
-  FaBed, 
   FaCalendarAlt, 
-  FaImages, 
   FaPhone,
   FaStar,
-  FaChevronDown,
-  FaMapMarkerAlt
+  FaChevronDown
 } from "react-icons/fa";
 
 // Color palette from your image
 const palette = {
-  background: "#F7F1E6",      // Background
+  background: "#F7F1E6",      // Background / section fills
   headers: "#323232",         // Headers
   descriptions: "#666666",    // Descriptions
-  buttons: "#B6D1A9",         // Buttons / Accents
-  cards: "#FFFFFF",           // Cards / Dividers
-  highlights: "#C9A13C"       // Highlights / CTAs
+  buttons: "#668575",         // Buttons / Accents
+  cards: "#E7DFD6",           // Cards / Dividers
+  highlights: "#D86F41"       // Highlights / CTAs
 };
 
 const HospitalityNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -45,14 +40,8 @@ const HospitalityNavbar = () => {
 
   const menuItems = [
     { name: 'Home', icon: FaHome, href: '/' },
-    { 
-      name: 'About Us', 
-      icon: FaInfoCircle, 
-      href: '/about',
-    },
-    
+    { name: 'About Us', icon: FaInfoCircle, href: '/about' },
     { name: 'Ruhunu in Focus(Blog)', icon: FaCalendarAlt, href: '/blog' },
-   
     { name: 'Contact', icon: FaPhone, href: '/contact' }
   ];
 
@@ -206,7 +195,7 @@ const HospitalityNavbar = () => {
           style={{ width: `${scrollProgress * 100}%` }}
         ></div>
 
-        {/* Background Decorative Elements */}
+        {/* Decorative Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/4 w-32 h-32 rounded-full blur-2xl" 
                style={{ background: palette.buttons, opacity: 0.10 }}>
@@ -228,13 +217,11 @@ const HospitalityNavbar = () => {
                 <h1 className="text-xl md:text-2xl logo">
                   Ruhunu<span className="logo-highlight">group</span>
                 </h1>
-                <p className="text-xs opacity-70" style={{ color: palette.highlights }}>
-                  Hospitality Excellence
-                </p>
+                
               </div>
             </div>
 
-            {/* Hamburger Menu Button - always visible */}
+            {/* Hamburger Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300"
@@ -244,8 +231,7 @@ const HospitalityNavbar = () => {
             </button>
           </div>
         </div>
-
-        {/* Mobile Menu - always used for all screen sizes */}
+        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="mobile-menu backdrop-blur border-t"
                style={{ 
@@ -265,25 +251,8 @@ const HospitalityNavbar = () => {
                       <span className="font-medium">{item.name}</span>
                       {item.dropdown && <FaChevronDown className="text-xs ml-auto" />}
                     </a>
-                    {/* Mobile Dropdown */}
-                    {item.dropdown && (
-                      <div className="ml-12 space-y-1">
-                        {item.dropdown.map((dropItem, dropIndex) => (
-                          <a
-                            key={dropIndex}
-                            href="#"
-                            className="block py-2 px-4 text-sm opacity-80 hover:opacity-100 transition-opacity"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {dropItem}
-                          </a>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 ))}
-                {/* Mobile CTA */}
-                
               </div>
             </div>
           </div>

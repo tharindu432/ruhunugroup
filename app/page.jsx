@@ -2,7 +2,6 @@
 import React, { useRef } from "react";
 import { useRouter } from "next/navigation";
 
-// Replace with your actual logo path
 const LOGO_URL = "/logo.jpg";
 
 const palettes = {
@@ -30,20 +29,23 @@ const Home = () => {
   const router = useRouter();
   const leftRef = useRef(null);
   const rightRef = useRef(null);
+  const logoWrapRef = useRef(null);
   const logoRef = useRef(null);
 
-  // Handles animated transition on section click
   const handleSectionClick = (section) => {
     const el = section === "hospitality" ? leftRef.current : rightRef.current;
     const other = section === "hospitality" ? rightRef.current : leftRef.current;
+    const logoWrap = logoWrapRef.current;
     const logo = logoRef.current;
-    if (el && other && logo) {
+    if (el && other && logoWrap && logo) {
+      // Remove logo's pulse and bounce instantly, trigger pop-out
+      logoWrap.classList.add("logo-exit");
+      logo.classList.add("logo-pop");
       el.classList.add("section-expand");
       other.classList.add("section-shrink");
-      logo.classList.add("logo-zoom");
       setTimeout(() => {
         router.push(section === "hospitality" ? "/hospitality" : "/automobile");
-      }, 1200); // Match transition duration
+      }, 450); // Fast, matches animation
     }
   };
 
@@ -67,10 +69,10 @@ const Home = () => {
           justify-content: center;
           position: relative;
           transition:
-            flex 1.2s cubic-bezier(0.7,0.2,0.2,1),
-            box-shadow 0.6s cubic-bezier(0.7,0.2,0.2,1),
-            filter 0.7s cubic-bezier(0.7,0.2,0.2,1),
-            z-index 0.4s;
+            flex 0.45s cubic-bezier(0.8,0.2,0.2,1.2),
+            box-shadow 0.3s cubic-bezier(0.8,0.2,0.2,1.2),
+            filter 0.3s cubic-bezier(0.8,0.2,0.2,1.2),
+            z-index 0.3s;
           cursor: pointer;
           z-index: 1;
           overflow: hidden;
@@ -79,45 +81,48 @@ const Home = () => {
         .section-expand {
           flex: 10 1 0 !important;
           z-index: 10;
-          /* Remove black backdrop! Use a subtle gold glow instead */
           box-shadow: 0 0 0 9999px rgba(200,161,61,0.05);
-          filter: brightness(1.04) blur(0.5px);
+          filter: brightness(1.09) blur(0.2px);
         }
         .section-shrink {
           flex: 0.01 1 0 !important;
-          filter: blur(5px) grayscale(0.6) brightness(0.7);
+          filter: blur(7px) grayscale(0.7) brightness(0.7);
           pointer-events: none;
         }
         .left-section {
           background: ${palettes.hospitality.bg};
           color: ${palettes.hospitality.text};
           box-shadow: 0 0 80px 0 #C8A13D22 inset;
-          animation: leftEnter 1.2s cubic-bezier(0.7,0.2,0.2,1);
+          animation: leftEnter 0.6s cubic-bezier(0.7,1.3,0.2,1.01);
         }
         .right-section {
           background: ${palettes.automobile.bg};
           color: ${palettes.automobile.text};
           box-shadow: 0 0 80px 0 #3E7FFF22 inset;
-          animation: rightEnter 1.2s cubic-bezier(0.7,0.2,0.2,1);
+          animation: rightEnter 0.6s cubic-bezier(0.7,1.3,0.2,1.01);
         }
         @keyframes leftEnter {
-          from { transform: translateX(-40px) scale(0.98); opacity: 0.6; }
+          from { transform: translateX(-50px) scale(0.98); opacity: 0.4; }
+          60% { transform: translateX(10px) scale(1.05);}
           to { transform: none; opacity: 1; }
         }
         @keyframes rightEnter {
-          from { transform: translateX(40px) scale(0.98); opacity: 0.6; }
+          from { transform: translateX(50px) scale(0.98); opacity: 0.4; }
+          60% { transform: translateX(-10px) scale(1.05);}
           to { transform: none; opacity: 1; }
         }
         .section:hover:not(.section-shrink):not(.section-expand),
         .section:focus-visible:not(.section-shrink):not(.section-expand) {
-          box-shadow: 0 0 0 6px #C8A13D44, 0 0 80px 0 #fff7 inset;
+          box-shadow: 0 0 0 10px #C8A13D44, 0 0 80px 0 #fff7 inset;
           z-index: 3;
-          filter: brightness(1.06) drop-shadow(0 0 16px #C8A13D22);
+          filter: brightness(1.10) drop-shadow(0 0 24px #C8A13D22);
+          transition: box-shadow 0.2s, filter 0.2s;
+          transform: scale(1.025);
         }
         .right-section:hover:not(.section-shrink):not(.section-expand),
         .right-section:focus-visible:not(.section-shrink):not(.section-expand) {
-          box-shadow: 0 0 0 6px #3E7FFF44, 0 0 80px 0 #fff7 inset;
-          filter: brightness(1.09) drop-shadow(0 0 16px #3E7FFF22);
+          box-shadow: 0 0 0 10px #3E7FFF44, 0 0 80px 0 #fff7 inset;
+          filter: brightness(1.13) drop-shadow(0 0 24px #3E7FFF22);
         }
         .blob {
           position: absolute;
@@ -125,7 +130,7 @@ const Home = () => {
           filter: blur(70px);
           opacity: 0.54;
           pointer-events: none;
-          animation: floatBlobs 18s ease-in-out infinite alternate;
+          animation: floatBlobs 8s ease-in-out infinite alternate;
         }
         .left-section .blob1 {
           background: ${palettes.hospitality.blob};
@@ -137,7 +142,7 @@ const Home = () => {
           background: #fff9;
           width: 20vw; height: 20vw;
           bottom: 10vh; right: 2vw;
-          animation-delay: 6s;
+          animation-delay: 2s;
         }
         .right-section .blob1 {
           background: ${palettes.automobile.blob};
@@ -149,34 +154,34 @@ const Home = () => {
           background: #3E7FFF44;
           width: 14vw; height: 14vw;
           top: 12vh; left: 4vw;
-          animation-delay: 9s;
+          animation-delay: 3s;
         }
         @keyframes floatBlobs {
           0% { transform: scale(1) translateY(0px);}
-          50% { transform: scale(1.11) translateY(-32px) translateX(16px);}
+          50% { transform: scale(1.13) translateY(-32px) translateX(16px);}
           100% { transform: scale(1) translateY(0px);}
         }
         .sparkle {
           position: absolute;
-          width: 18px; height: 18px;
+          width: 22px; height: 22px;
           pointer-events: none;
-          opacity: 0.6;
-          animation: sparkleAnim 2.2s infinite linear;
+          opacity: 0.7;
+          animation: sparkleAnim 0.9s infinite linear alternate;
         }
         .left-section .sparkle {
           color: #C8A13D;
           left: 18%; top: 22%;
-          animation-delay: 0.6s;
+          animation-delay: 0.2s;
         }
         .right-section .sparkle {
           color: #3E7FFF;
           right: 16%; bottom: 25%;
-          animation-delay: 1.2s;
+          animation-delay: 0.4s;
         }
         @keyframes sparkleAnim {
           0% { opacity: 0; transform: scale(0.7) rotate(0deg);}
-          30% { opacity: 1; transform: scale(1.1) rotate(20deg);}
-          60% { opacity: 1; transform: scale(1.2) rotate(-10deg);}
+          40% { opacity: 1; transform: scale(1.2) rotate(24deg);}
+          60% { opacity: 1; transform: scale(1.3) rotate(-10deg);}
           100% { opacity: 0; transform: scale(0.7) rotate(0deg);}
         }
         .section-content {
@@ -184,7 +189,7 @@ const Home = () => {
           z-index: 2;
           text-align: center;
           padding: 2rem;
-          animation: fadeInUp 1.3s cubic-bezier(0.7,0.2,0.2,1);
+          animation: fadeInUp 0.6s cubic-bezier(0.7,1.2,0.2,1.01);
         }
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(40px);}
@@ -197,24 +202,37 @@ const Home = () => {
           letter-spacing: 1px;
           line-height: 1.08;
           text-shadow: 0 2px 24px #fff5, 0 1px 0 #0001;
+          animation: bounceTitle 0.5s cubic-bezier(.7,1.2,.2,1.01);
+        }
+        @keyframes bounceTitle {
+          0% { transform: scale(0.98);}
+          60% { transform: scale(1.10);}
+          100% { transform: scale(1);}
         }
         .section-desc {
           font-size: 1.22rem;
           margin-bottom: 2.2rem;
-          opacity: 0.85;
+          opacity: 0.89;
           font-weight: 500;
+          animation: fadeInUp 0.5s 0.1s backwards;
         }
         .section-btn {
-          padding: 0.95rem 2.5rem;
-          border-radius: 2rem;
-          font-weight: 700;
-          font-size: 1.18rem;
+          padding: 1.05rem 2.7rem;
+          border-radius: 2.2rem;
+          font-weight: 800;
+          font-size: 1.22rem;
           border: none;
           outline: none;
           cursor: pointer;
-          box-shadow: 0 4px 22px rgba(0,0,0,0.07);
-          transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+          box-shadow: 0 4px 22px rgba(0,0,0,0.10);
+          transition: transform 0.13s, box-shadow 0.13s, background 0.13s, color 0.13s;
           filter: drop-shadow(0 2px 12px #fff5);
+          animation: popBtn 0.4s 0.2s backwards;
+        }
+        @keyframes popBtn {
+          0% { transform: scale(0.8);}
+          70% { transform: scale(1.13);}
+          100% { transform: scale(1);}
         }
         .left-section .section-btn {
           background: linear-gradient(90deg, #C8A13D 65%, #B7D2A8 100%);
@@ -225,12 +243,18 @@ const Home = () => {
           color: #F5F7FA;
         }
         .section-btn:hover {
-          transform: translateY(-4px) scale(1.07) rotate(-1deg);
-          box-shadow: 0 8px 34px #fff8, 0 2px 8px #C8A13D33;
+          transform: translateY(-8px) scale(1.11) rotate(-2deg);
+          box-shadow: 0 12px 36px #fff8, 0 2px 8px #C8A13D33;
           background: #fff2;
+          animation: btnWiggle 0.18s;
         }
         .right-section .section-btn:hover {
-          box-shadow: 0 8px 34px #3E7FFF33, 0 2px 8px #3E7FFF33;
+          box-shadow: 0 12px 36px #3E7FFF33, 0 2px 8px #3E7FFF33;
+        }
+        @keyframes btnWiggle {
+          0% { transform: scale(1.1) rotate(-2deg);}
+          50% { transform: scale(0.97) rotate(2deg);}
+          100% { transform: scale(1.11) rotate(-2deg);}
         }
         .curved-divider {
           position: absolute;
@@ -241,11 +265,16 @@ const Home = () => {
           transform: translateX(-50%);
           z-index: 4;
           pointer-events: none;
-          animation: dividerGlow 2.5s infinite alternate;
+          animation: dividerGlow 0.9s infinite alternate, dividerWobble 0.9s infinite alternate;
         }
         @keyframes dividerGlow {
           0% { filter: drop-shadow(0 0 0 #C8A13D77);}
-          100% { filter: drop-shadow(0 0 16px #C8A13D77);}
+          100% { filter: drop-shadow(0 0 24px #C8A13D77);}
+        }
+        @keyframes dividerWobble {
+          0% { transform: translateX(-50%) scaleX(1);}
+          60% { transform: translateX(-50%) scaleX(1.08);}
+          100% { transform: translateX(-50%) scaleX(1);}
         }
         .logo-center-wrap {
           position: absolute;
@@ -261,12 +290,25 @@ const Home = () => {
           background: radial-gradient(circle at 60% 40%, #fff9 60%, #C8A13D44 100%);
           border-radius: 50%;
           box-shadow: 0 6px 40px #C8A13D22, 0 0 0 12px #fff2;
-          transition: box-shadow 0.7s cubic-bezier(.7,.2,.2,1);
-          animation: logoPulse 2.5s infinite alternate;
+          transition: box-shadow 0.5s cubic-bezier(.7,.2,.2,1);
+          animation: logoPulse 1.5s infinite alternate, logoBounce 1.4s infinite alternate;
+        }
+        .logo-exit {
+          animation: logoFadeOut 0.4s cubic-bezier(.7,1.5,.2,1.01) forwards !important;
         }
         @keyframes logoPulse {
           0% { box-shadow: 0 6px 40px #C8A13D22, 0 0 0 12px #fff2;}
           100% { box-shadow: 0 12px 60px #C8A13D33, 0 0 0 24px #fff2;}
+        }
+        @keyframes logoBounce {
+          0% { transform: translate(-50%,-50%) scale(1);}
+          50% { transform: translate(-50%,-52%) scale(1.09);}
+          100% { transform: translate(-50%,-50%) scale(1);}
+        }
+        @keyframes logoFadeOut {
+          0% { opacity: 1; transform: translate(-50%,-50%) scale(1);}
+          60% { opacity: 0.6; transform: translate(-50%,-60%) scale(1.25);}
+          100% { opacity: 0; transform: translate(-50%,-70%) scale(0.7);}
         }
         .logo-center {
           width: 98px;
@@ -276,17 +318,17 @@ const Home = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          animation: rotateLogo 3.5s linear infinite;
+          animation: rotateLogo 2.5s linear infinite;
           box-shadow: 0 2px 18px #C8A13D22;
-          transition: transform 1.1s cubic-bezier(.7,.2,.2,1);
+          transition: transform 0.6s cubic-bezier(.7,.2,.2,1);
         }
-        .logo-zoom {
-          animation: logoZoom 1.2s cubic-bezier(.7,.2,.2,1) forwards;
+        .logo-pop {
+          animation: logoPop 0.4s cubic-bezier(.7,1.5,.2,1.01) forwards !important;
         }
-        @keyframes logoZoom {
+        @keyframes logoPop {
           0% { transform: scale(1) rotate(0deg);}
-          60% { transform: scale(1.25) rotate(90deg);}
-          100% { transform: scale(0.7) rotate(360deg);}
+          50% { transform: scale(1.3) rotate(40deg);}
+          100% { transform: scale(0.7) rotate(90deg);}
         }
         @keyframes rotateLogo {
           0% { transform: rotate(0deg);}
@@ -390,8 +432,8 @@ const Home = () => {
       </div>
 
       {/* Rotating Logo at Center */}
-      <div className="logo-center-wrap" ref={logoRef}>
-        <div className="logo-center">
+      <div className="logo-center-wrap" ref={logoWrapRef}>
+        <div className="logo-center" ref={logoRef}>
           <img
             src={LOGO_URL}
             alt="Company Logo"

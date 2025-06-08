@@ -90,7 +90,7 @@ const HospitalityFooter = () => {
         }
         .social-icon:hover {
           transform: translateY(-5px) scale(1.1);
-          box-shadow: 0 10px 20px #B7D2A833;
+          box-shadow: 0 10px 20px #82A67433;
         }
         .footer-link {
           position: relative;
@@ -104,18 +104,18 @@ const HospitalityFooter = () => {
           height: 2px;
           bottom: 0;
           left: 0;
-          background: #C8A13D;
+          background: #E87B5B;
           transition: width 0.3s ease;
         }
         .footer-link:hover::after {
           width: 100%;
         }
         .footer-link:hover {
-          color: #C8A13D;
+          color: #E87B5B;
           transform: translateX(5px);
         }
         .gradient-text {
-          background: linear-gradient(90deg, #B7D2A8, #C8A13D);
+          background: linear-gradient(90deg, #82A674, #E87B5B);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -127,24 +127,24 @@ const HospitalityFooter = () => {
           width: 60px;
           height: 60px;
           border-radius: 50%;
-          background: linear-gradient(135deg, #B7D2A8, #C8A13D);
+          background: linear-gradient(135deg, #82A674, #E87B5B);
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
           transition: all 0.3s ease;
           z-index: 1000;
-          box-shadow: 0 4px 20px #B7D2A833;
+          box-shadow: 0 4px 20px #82A67433;
         }
         .back-to-top:hover {
           transform: translateY(-5px) scale(1.1);
-          box-shadow: 0 8px 30px #C8A13D55;
+          box-shadow: 0 8px 30px #E87B5B55;
         }
         .progress-ring {
           transform: rotate(-90deg);
         }
         .progress-ring-circle {
-          stroke: #C8A13D;
+          stroke: #E87B5B;
           stroke-width: 3;
           fill: transparent;
           r: 25;
@@ -160,33 +160,33 @@ const HospitalityFooter = () => {
           border-radius: 8px;
         }
         .contact-item:hover {
-          background: #B7D2A822;
+          background: #82A67422;
           transform: translateX(10px);
         }
         .newsletter-input {
-          background: #FFFFFF;
-          border: 1px solid #B7D2A8;
-          color: #323232;
+          background: #F5F5F0;
+          border: 1px solid #82A674;
+          color: #3E3E3E;
           transition: all 0.3s ease;
         }
         .newsletter-input:focus {
-          background: #B7D2A822;
-          border-color: #C8A13D;
-          box-shadow: 0 0 0 3px #C8A13D33;
+          background: #82A67422;
+          border-color: #E87B5B;
+          box-shadow: 0 0 0 3px #E87B5B33;
           outline: none;
         }
         .newsletter-input::placeholder {
           color: #6E6E6E99;
         }
         .subscribe-btn {
-          background: linear-gradient(135deg, #C8A13D, #B7D2A8);
-          color: #323232;
+          background: linear-gradient(135deg, #E87B5B, #82A674);
+          color: #3E3E3E;
           transition: all 0.3s ease;
         }
         .subscribe-btn:hover {
-          background: linear-gradient(135deg, #B7D2A8, #C8A13D);
+          background: linear-gradient(135deg, #82A674, #E87B5B);
           transform: translateY(-2px);
-          box-shadow: 0 8px 25px #C8A13D44;
+          box-shadow: 0 8px 25px #E87B5B44;
         }
         .backdrop-blur {
           backdrop-filter: blur(10px);
@@ -202,18 +202,18 @@ const HospitalityFooter = () => {
         id="hospitality-footer"
         className="relative overflow-hidden"
         style={{ 
-          background: "#F7F1E7",
-          color: "#323232"
+          background: "#F5F5F0",
+          color: "#3E3E3E"
         }}
       >
         {/* Background Decorative Elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-64 h-64 rounded-full blur-3xl floating-element"
-            style={{ background: "#B7D2A822" }} />
+            style={{ background: "#82A67422" }} />
           <div className="absolute bottom-20 right-10 w-48 h-48 rounded-full blur-3xl floating-element"
-            style={{ background: "#C8A13D22", animationDelay: '1s' }} />
+            style={{ background: "#E87B5B22", animationDelay: '1s' }} />
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl pulse-element"
-            style={{ background: "#FFFFFF33" }} />
+            style={{ background: "#F5F5F033" }} />
         </div>
         {/* Main Footer Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16">
@@ -228,23 +228,23 @@ const HospitalityFooter = () => {
                 <p className="text-base leading-relaxed mb-4" style={{ color: "#6E6E6E", opacity: 0.9 }}>
                   Transforming experiences with world-class hospitality services across Sri Lanka. Where warmth meets excellence.
                 </p>
-                <div className="flex items-center space-x-2 text-sm" style={{ color: "#C8A13D" }}>
+                <div className="flex items-center space-x-2 text-sm" style={{ color: "#E87B5B" }}>
                   <FaStar />
                   <span>Rated 4.9/5 by our guests</span>
                 </div>
               </div>
               {/* Social Media */}
               <div>
-                <h4 className="text-lg font-semibold mb-4" style={{ color: "#C8A13D" }}>
+                <h4 className="text-lg font-semibold mb-4" style={{ color: "#E87B5B" }}>
                   Follow Us
                 </h4>
                 <div className="flex space-x-4">
                   {[
-                    { icon: FaFacebookF, color: "#B7D2A8", url: "https://facebook.com" },
-                    { icon: FaInstagram, color: "#C8A13D", url: "https://instagram.com" },
-                    { icon: FaTwitter, color: "#B7D2A8", url: "https://twitter.com" },
-                    { icon: FaLinkedinIn, color: "#C8A13D", url: "https://linkedin.com" },
-                    { icon: FaYoutube, color: "#B7D2A8", url: "https://youtube.com" }
+                    { icon: FaFacebookF, color: "#82A674", url: "https://facebook.com" },
+                    { icon: FaInstagram, color: "#E87B5B", url: "https://instagram.com" },
+                    { icon: FaTwitter, color: "#82A674", url: "https://twitter.com" },
+                    { icon: FaLinkedinIn, color: "#E87B5B", url: "https://linkedin.com" },
+                    { icon: FaYoutube, color: "#82A674", url: "https://youtube.com" }
                   ].map((social, index) => (
                     <a
                       key={index}
@@ -266,7 +266,7 @@ const HospitalityFooter = () => {
 
             {/* Quick Navigation Paths */}
             <div className={`space-y-6 ${isVisible ? 'animate-fade-in-up stagger-2' : ''}`}>
-              <h4 className="text-lg font-semibold mb-4" style={{ color: "#C8A13D" }}>
+              <h4 className="text-lg font-semibold mb-4" style={{ color: "#E87B5B" }}>
                 Quick Links
               </h4>
               <nav className="space-y-3">
@@ -290,27 +290,27 @@ const HospitalityFooter = () => {
 
             {/* Contact Info */}
             <div className={`space-y-6 ${isVisible ? 'animate-fade-in-up stagger-3' : ''}`}>
-              <h4 className="text-lg font-semibold mb-4" style={{ color: "#C8A13D" }}>
+              <h4 className="text-lg font-semibold mb-4" style={{ color: "#E87B5B" }}>
                 Contact Us
               </h4>
               <div className="space-y-4">
                 <div className="contact-item flex items-start space-x-3">
-                  <FaMapMarkerAlt className="mt-1 flex-shrink-0" style={{ color: "#C8A13D" }} />
+                  <FaMapMarkerAlt className="mt-1 flex-shrink-0" style={{ color: "#E87B5B" }} />
                   <div>
-                    <p className="text-sm font-medium" style={{ color: "#323232" }}>Head Office</p>
+                    <p className="text-sm font-medium" style={{ color: "#3E3E3E" }}>Head Office</p>
                     <p className="text-sm opacity-90" style={{ color: "#6E6E6E" }}>123 Hospitality Avenue, Colombo 07, Sri Lanka</p>
                   </div>
                 </div>
                 
                 <div className="contact-item flex items-center space-x-3">
-                  <FaPhone className="flex-shrink-0" style={{ color: "#C8A13D" }} />
+                  <FaPhone className="flex-shrink-0" style={{ color: "#E87B5B" }} />
                   <div>
                     <p className="text-sm" style={{ color: "#6E6E6E" }}>+94 11 234 5678</p>
                   </div>
                 </div>
                 
                 <div className="contact-item flex items-center space-x-3">
-                  <FaEnvelope className="flex-shrink-0" style={{ color: "#C8A13D" }} />
+                  <FaEnvelope className="flex-shrink-0" style={{ color: "#E87B5B" }} />
                   <div>
                     <p className="text-sm" style={{ color: "#6E6E6E" }}>info@ruhunugroup.lk</p>
                   </div>
@@ -323,7 +323,7 @@ const HospitalityFooter = () => {
         {/* Bottom Bar */}
         <div 
           className={`relative z-10 border-t backdrop-blur ${isVisible ? 'animate-fade-in-up stagger-5' : ''}`}
-          style={{ borderColor: "#B7D2A855", background: "#FFFFFF", color: "#6E6E6E" }}
+          style={{ borderColor: "#82A67455", background: "#F5F5F0", color: "#6E6E6E" }}
         >
           <div className="max-w-7xl mx-auto px-4 py-6">
             <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
@@ -333,7 +333,7 @@ const HospitalityFooter = () => {
                 </p>
                 <div className="hidden md:flex items-center space-x-1 text-sm">
                   <span style={{ color: "#6E6E6E" }}>Made with</span>
-                  <FaHeart className="pulse-element" style={{ color: "#C8A13D", fontSize: "0.8rem" }} />
+                  <FaHeart className="pulse-element" style={{ color: "#E87B5B", fontSize: "0.8rem" }} />
                   <span style={{ color: "#6E6E6E" }}>in Sri Lanka</span>
                 </div>
               </div>
@@ -346,7 +346,7 @@ const HospitalityFooter = () => {
           <svg className="progress-ring" width="60" height="60">
             <circle
               className="progress-ring-circle"
-              stroke="#C8A13D"
+              stroke="#E87B5B"
               strokeWidth="3"
               fill="transparent"
               r="25"
@@ -354,7 +354,7 @@ const HospitalityFooter = () => {
               cy="30"
             />
           </svg>
-          <FaArrowUp style={{ position: "absolute", left: 19, top: 19, color: "#323232", fontSize: "1.3rem" }} />
+          <FaArrowUp style={{ position: "absolute", left: 19, top: 19, color: "#3E3E3E", fontSize: "1.3rem" }} />
         </div>
       </footer>
     </>
